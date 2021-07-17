@@ -1,0 +1,20 @@
+ESX = nil
+TriggerEvent('esx:SharedObject1212', function(obj) ESX = obj end)
+ESX.RegisterServerCallback('getPlayers', function(playerCount, cb)
+    local playerCount = GetNumPlayerIndices()
+    print("hej")
+cb(playerCount)
+end)
+
+ESX.RegisterServerCallback('getPlayers2', function(playerCount, cb)
+    local playerCount = GetNumPlayerIndices()
+    print("hej")
+cb(playerCount)
+end)
+
+RegisterNetEvent('getPlayers:check')
+AddEventHandler('getPlayers:check', function()
+    local playerCount = GetNumPlayerIndices()
+    print(playerCount)
+TriggerClientEvent("getPlayers:done", playerCount)
+end)
